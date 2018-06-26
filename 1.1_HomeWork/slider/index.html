@@ -11,7 +11,7 @@
 <body>
   <section class="product-item">
     <div class="product-gallery">
-      <img src="i/airmax-jump.png" alt="" id="slider">
+      <img src="i/airmax.png" alt="" id="slider">
     </div>
     <div class="product-data">
       <p class="product-firm">Nike</p>
@@ -30,24 +30,7 @@
         </p>
       </div>
     </div>
-    <script>
-      const imgsName = [
-        "airmax-jump.png", 
-        "airmax-on-foot.png", 
-        "airmax-playground.png", 
-        'airmax-top-view.png', 
-        'airmax.png'
-        ];
-      const img = document.getElementById("slider");
-      let step = 1;
-      setInterval(() => {
-        if (step == 5) {
-          step = 0
-          }
-        img.src = "i/" + imgsName[step];
-        step += 1;
-      }, 5000);
-    </script>
+    <script src="js/slider.js"></script>
   </section>
 </body>
 </html>
