@@ -51,7 +51,6 @@ function buttonClickPrev() {
     title.title = track[step].replace('.mp3','')
 }
 
-
 buttonNextTrack.onclick = buttonClickNext;
 buttonPrevTrack.onclick = buttonClickPrev;
 playButton.onclick = buttonClickPlay;
