@@ -14,6 +14,14 @@ const title = document.getElementsByClassName('title')[0];
 function buttonClickPlay() {
     mediaplayer.classList.add('play');
     player.play();
+    // проверяем играет ли музыка если нет то отключаем анимамцию
+    function stopThenEnd() {
+        if (player.ended) {
+            buttonClickStop(); // отключаем анимацию
+            clearInterval(timer); // убиваем таймер
+        }
+    }
+    var timer = setInterval(stopThenEnd, 1000); // по таймеру проверяем каждую секунду
 }
 
 function buttonClickPause() {
