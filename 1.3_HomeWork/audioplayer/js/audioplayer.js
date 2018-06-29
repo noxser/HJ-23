@@ -2,8 +2,6 @@
 
 const track = ['LA Chill Tour.mp3', 'LA Fusion Jam.mp3', 'This is it band.mp3'];
 
-// const playButton = document.getElementsByClassName('fa-play')[0];
-// const pauseButton = document.getElementsByClassName('fa-pause')[0];
 const playstate = document.getElementsByClassName('playstate')[0];
 const stopButton = document.getElementsByClassName('stop')[0];
 const buttonNextTrack = document.getElementsByClassName('next')[0];
