@@ -8,7 +8,6 @@ var listFromKeyboar = []
 function showMenue(event) {
     if (event.ctrlKey && event.altKey && event.code == 'KeyT') {
         nav.classList.toggle('visible');
-        listFromKeyboar = [];
     }
 }
 
