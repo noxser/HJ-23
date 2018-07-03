@@ -13,12 +13,12 @@ function playSound(event) {
 
 function hiLoSound(event) {
     if (event.shiftKey) {
-        modPiano.classList.add('higher')
-        pathSound = '/higher/';
-    }
-    if (event.altKey) {
         modPiano.classList.add('lower')
         pathSound = '/lower/';
+    }
+    if (event.altKey) {
+        modPiano.classList.add('higher')
+        pathSound = '/higher/';
     }
 }
 
