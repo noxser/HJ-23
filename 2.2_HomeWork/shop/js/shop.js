@@ -1,7 +1,6 @@
 'use strict'
 
 const buttons = document.getElementsByClassName('add');
-var basket = [];
 var cartCount = 0;
 var cartTotalPrice = 0;
 
