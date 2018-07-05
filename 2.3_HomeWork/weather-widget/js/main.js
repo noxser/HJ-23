@@ -1,3 +1,5 @@
+'use strict'
+
 const request = new XMLHttpRequest();
 
 request.addEventListener("load", onLoad);
