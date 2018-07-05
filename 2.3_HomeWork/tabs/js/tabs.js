@@ -43,3 +43,4 @@ function clickOnTab(event) {
 Array.from(tabs).forEach(tab => {
     tab.addEventListener('click', clickOnTab);
 });
+
