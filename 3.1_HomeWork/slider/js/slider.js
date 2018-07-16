@@ -3,16 +3,21 @@
 function slider(container) {
 
     const slides = document.querySelector('.slides');
-    const nav = container.querySelector('.slider-nav');
-    const prev = nav.firstElementChild;
-    const next = nav.firstElementChild.nextElementSibling;
-    const first = nav.lastElementChild.previousElementSibling;
-    const last = nav.lastElementChild;
-        
-    prev.addEventListener('click', event => deal(false));
-    next.addEventListener('click', event => deal(true));
-    first.addEventListener('click', event => deal(false));
-    last.addEventListener('click', event => deal(true));
+    const slideButtons = document.querySelectorAll('a[data-action]');
+    const prev = document.querySelector('a[data-action = prev]');
+    const next = document.querySelector('a[data-action = next]');
+    const first = document.querySelector('a[data-action = first]');
+    const last = document.querySelector('a[data-action = last]');
+
+    // навешиваем обработчики на кнопки
+    Array.from(slideButtons).forEach(button => {
+        if (button.dataset.action == 'first' || button.dataset.action == 'prev') {
+            button.addEventListener('click', event => changeSlider(false))
+        } 
+        if (button.dataset.action == 'next' || button.dataset.action == 'last') {
+            button.addEventListener('click', event => changeSlider(true))
+        }
+    });
 
     // состояние по умолчанию
     slides.firstElementChild.classList.add('slide-current');
@@ -20,7 +25,7 @@ function slider(container) {
     prev.classList.add('disabled');
 
     // логика работы кнопок
-    function deal(move) {
+    function changeSlider(move) {
         // игнорируем повторные клики по не активным кнопкам
         if (event.target.classList.contains('disabled')) {
             return;
