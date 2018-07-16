@@ -11,12 +11,7 @@ function slider(container) {
 
     // навешиваем обработчики на кнопки
     Array.from(slideButtons).forEach(button => {
-        if (button.dataset.action == 'first' || button.dataset.action == 'prev') {
-            button.addEventListener('click', event => changeSlider(false))
-        } 
-        if (button.dataset.action == 'next' || button.dataset.action == 'last') {
-            button.addEventListener('click', event => changeSlider(true))
-        }
+        button.addEventListener('click', event => changeSliders());
     });
 
     // состояние по умолчанию
@@ -25,7 +20,7 @@ function slider(container) {
     prev.classList.add('disabled');
 
     // логика работы кнопок
-    function changeSlider(move) {
+    function changeSliders() {
         // игнорируем повторные клики по не активным кнопкам
         if (event.target.classList.contains('disabled')) {
             return;
@@ -33,13 +28,15 @@ function slider(container) {
 
         const currentSlide = container.querySelector('.slide-current');
         var activatedSlide;
+        var currentAction = event.target.dataset.action;
 
-        if (event.target.dataset.action == 'last') {
+        if (currentAction == 'last') {
             activatedSlide = currentSlide.parentElement.lastElementChild;
-        } else if (event.target.dataset.action == 'first') {
+        } else if (currentAction == 'first') {
             activatedSlide = currentSlide.parentElement.firstElementChild;
         } else {
-            activatedSlide = move ? currentSlide.nextElementSibling : currentSlide.previousElementSibling;
+            activatedSlide = (currentAction == 'next' || currentAction == 'last') 
+            ? currentSlide.nextElementSibling : currentSlide.previousElementSibling;
         }
         
         currentSlide.classList.remove('slide-current');
