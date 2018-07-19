@@ -39,10 +39,10 @@ jspm_packages
 
 /.idea/
 /.git/
-/.gitignore/
-/node_modules/
-/vscode/
-/package.json/
-/package-lock.json/
-/README.md/
+.gitignore
+node_modules
+vscode
+package.json
+package-lock.json
+README.md
 index.html
