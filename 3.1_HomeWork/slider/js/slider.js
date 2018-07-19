@@ -11,7 +11,7 @@ function slider(container) {
 
     // навешиваем обработчики на кнопки
     Array.from(slideButtons).forEach(button => {
-        button.addEventListener('click', event => changeSliders());
+        button.addEventListener('click', changeSliders);
     });
 
     // состояние по умолчанию
@@ -20,7 +20,7 @@ function slider(container) {
     prev.classList.add('disabled');
 
     // логика работы кнопок
-    function changeSliders() {
+    function changeSliders(event) {
         // игнорируем повторные клики по не активным кнопкам
         if (event.target.classList.contains('disabled')) {
             return;
