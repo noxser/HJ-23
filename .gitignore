@@ -45,4 +45,4 @@ vscode
 package.json
 package-lock.json
 README.md
-index.html
+/index.html
