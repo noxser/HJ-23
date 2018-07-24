@@ -6,7 +6,7 @@ const messageInput = chat.querySelector('.message-input');
 const messageSubmit = chat.querySelector('.message-submit');
 const messageStatus = chat.querySelector('.message-status');
 const messagesContent = chat.querySelector('.messages-content');
-const loadingMessage = chat.querySelectorAll('message loading');
+const loadingMessage = chat.querySelector('.loading');
 const inputMessage = chat.querySelectorAll('div.message')[1];
 const personalMessage = chat.querySelector('.message-personal');
 const connection = new WebSocket('wss://neto-api.herokuapp.com/chat');
@@ -15,6 +15,10 @@ function curTime() {
     // используем 'en-GB' для отобраени 01:01:00 дальше оставляем только часы и минуты
     return (new Date().toLocaleTimeString('en-GB', {hour: '2-digit', minute:'2-digit'}));
 };
+
+// поменяем линки на аватарку для кодпена
+loadingMessage.querySelector('img').src = 'https://netology-code.github.io/hj-homeworks/websocket/chat/i/profile-80.jpg';
+inputMessage.querySelector('img').src = 'https://netology-code.github.io/hj-homeworks/websocket/chat/i/profile-80.jpg';
 
 connection.addEventListener('open', () => {
     messageSubmit.disabled = false;
