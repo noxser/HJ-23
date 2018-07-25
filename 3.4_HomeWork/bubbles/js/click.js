@@ -13,7 +13,6 @@ function onClick (event) {
         x: event.clientX, 
         y: event.clientY})
     );
-    showBubbles(connection);
 }
 
 connection.addEventListener('error', error => {
