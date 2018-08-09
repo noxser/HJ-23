@@ -3,7 +3,6 @@
 const textarea = document.querySelector('.textarea');
 const block = document.querySelector('.block');
 const message = document.querySelector('.message');
-let mouseOut = false;
 
 // оптимизируем ввод
 function debounce(callback, delay) {
@@ -32,22 +31,20 @@ textarea.addEventListener('click',() => {
 textarea.addEventListener('input',() => {
     block.classList.add('active')
     message.classList.remove('view')
-    mouseOut = false;
+    // mouseOut = false;
 })
 
 // при остановке ввода более 2 сек сообщение
 textarea.addEventListener('keydown', debounce(() => {
-    if (!mouseOut) {
       block.classList.remove('active')
       message.classList.add('view')
-      }}, 2000)
+      }, 2000)
 )
 
-// реагируем по движению мыши
-textarea.addEventListener('mouseout',() => {
+// реагируем на потерю фокуса в поле ввода
+textarea.addEventListener('blur',() => {
     block.classList.remove('active')
     message.classList.remove('view')
-    mouseOut = true;
 })
 
 
