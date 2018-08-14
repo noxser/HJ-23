@@ -32,12 +32,10 @@ class SpriteGenerator {
     this.imagesCountContainer.textContent = this.imagesCount;
   }
   createAll() {
-    var cssText = 
-    `.icon {
-      display: inline-block;
-      background-image: url(img/sprite.png);
-    }`
-
+    var cssText = `.icon {
+  display: inline-block;
+  background-image: url(img/sprite.png);
+}`
     if ( this.images.length != 0 ) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -55,27 +53,26 @@ class SpriteGenerator {
       // убираем расширение
       let name = image.name.replace( /(\.[^/.]+)+$/, "" ) 
       let iconParam =`
-      .icon_${name} {
-        background-position: ${x}px 0;
-        width: ${image.width}px;
-        height: ${image.height}px;
-      }`
+.icon_${name} {
+  background-position: ${x}px 0;
+  width: ${image.width}px;
+  height: ${image.height}px;
+}`
       cssText = cssText + iconParam;
       x += image.width;
     });
-    this.imageElement.src = '';
     this.imageElement.src = canvas.toDataURL();
-    this.codeContainer.style.whiteSpace = 'pre-line';
-    this.codeContainer.textContent = '';
     this.codeContainer.textContent = cssText;
     }
   }
   takeWidth() {
-    return summ( this.images.map(( img ) => img.width ));
+    return summ( prop( this.images, 'width' ));
+    // return summ( this.images.map(( img ) => img.width ));
   }
   takeHeigth() {
     // пока только по самому большому делаем канвас
-    return Math.max.apply( null, this.images.map(( img ) => Number( img.height )));
+    return Math.max(...prop( this.images, 'height' )); 
+    // return Math.max.apply( null, this.images.map(( img ) => Number( img.height )));
   }
 }
 

@@ -50,18 +50,20 @@ class iLayout {
   takeResult() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
+    const imagesForCollage = this.positionsContainer.querySelectorAll('.layout__item')
     canvas.width = this.positionsContainer.offsetWidth;
     canvas.height = this.positionsContainer.offsetHeight;
     // грузим изображения в canvas по очереди
-    Array.from(this.positionsContainer.querySelectorAll('.layout__item')).forEach(element => {
+    Array.from(imagesForCollage).forEach(el => {
         // формируем координаты для drawImage
-        let x =  Math.abs( Math.round( element.offsetLeft - element.parentElement.getBoundingClientRect().left) )
-        let y =   Math.abs( Math.round( element.offsetTop - element.parentElement.getBoundingClientRect().top) )
+        let boundEl = el.parentElement.getBoundingClientRect()
+        let x =  Math.abs( Math.round( el.offsetLeft - boundEl.left) )
+        let y =   Math.abs( Math.round( el.offsetTop - boundEl.top) )
         // пустое изображение
         let img = new Image()
-        img.src = element.querySelector('img').src
+        img.src = el.querySelector('img').src
         // маштабируем  картинки
-        ctx.drawImage( img, x, y, element.offsetWidth, element.offsetWidth * img.height / img.width );
+        ctx.drawImage( img, x, y, el.offsetWidth, el.offsetWidth * img.height / img.width );
     });
     this.result.innerText = `<img  src="${canvas.toDataURL()}" alt="iLayout">`;
   }
